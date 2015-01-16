@@ -2,6 +2,7 @@ package cl.monsoon.s1next.fragment;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.PorterDuff;
 import android.graphics.Rect;
 import android.net.Uri;
 import android.os.Bundle;
@@ -28,6 +29,7 @@ import cl.monsoon.s1next.util.ObjectUtil;
 import cl.monsoon.s1next.util.StringHelper;
 import cl.monsoon.s1next.util.ToastUtil;
 import cl.monsoon.s1next.widget.AsyncResult;
+import cl.monsoon.s1next.widget.LinearLayoutDividerItemDecoration;
 import cl.monsoon.s1next.widget.MyRecyclerView;
 
 /**
@@ -87,6 +89,9 @@ public final class PostListPagerFragment extends BaseFragment<PostListWrapper> {
         // linearLayoutManager.setSmoothScrollbarEnabled(false);
         // if https://code.google.com/p/android/issues/detail?id=78375&q=setSmoothScrollbarEnabled&colspec=ID%20Type%20Status%20Owner%20Summary%20Stars fixed
         mRecyclerView.setLayoutManager(linearLayoutManager);
+        if(Config.isS1Theme()){
+            mRecyclerView.addItemDecoration(new LinearLayoutDividerItemDecoration(getActivity(),Config.getColorAccent(), PorterDuff.Mode.SRC_ATOP));
+        }
         mRecyclerAdapter = new PostListRecyclerAdapter(getActivity());
         mRecyclerView.setAdapter(mRecyclerAdapter);
 

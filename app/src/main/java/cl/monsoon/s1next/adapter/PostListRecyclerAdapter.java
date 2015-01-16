@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Rect;
 import android.os.Build;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.text.Html;
 import android.text.Spannable;
@@ -90,6 +91,14 @@ public final class PostListRecyclerAdapter extends RecyclerAdapter<Post, Recycle
                 LayoutInflater.from(
                         parent.getContext())
                         .inflate(R.layout.fragment_post_list, parent, false);
+
+        if(Config.isS1Theme()){
+            CardView cardView = ((CardView) view.findViewById(R.id.cardview));
+            cardView .setCardElevation(0);
+            cardView.setRadius(0);
+            cardView.setMaxCardElevation(0);
+
+        }
 
         return new ItemViewHolder(view);
     }
